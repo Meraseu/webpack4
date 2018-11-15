@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = {
     entry: {
@@ -57,9 +58,6 @@ module.exports = {
                             name: '[name].[ext]',
                             outputPath: 'img/'
                         }
-                    },
-                    {
-                        loader: 'image-webpack-loader'
                     }
                 ]
             }
@@ -75,6 +73,7 @@ module.exports = {
                 { from: 'src/img', to: 'img' }
             ]
         ),
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         new CleanWebpackPlugin('dist'),
         new MiniCssExtractPlugin({
             filename: "css/[name].css"
