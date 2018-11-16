@@ -56,7 +56,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'img/'
+                            outputPath: 'assets/'
                         }
                     }
                 ]
@@ -70,7 +70,7 @@ module.exports = {
         new OptimizeCssAssetsPlugin(),
         new CopyWebpackPlugin(
             [
-                { from: 'src/img', to: 'img' }
+                { from: 'src/assets', to: 'assets' }
             ]
         ),
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
